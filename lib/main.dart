@@ -1,76 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:sebastian/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const new({super.key});
+  const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State {
   int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('TECNAR APP')),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$counter',
-                style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
-              ),
-              Text(
-                'Click${counter == 1 ? '' : 's'}',
-                style: TextStyle(fontSize: 25),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-              child: Icon(Icons.plus_one),
-              onPressed: () {
-                setState(() {});
-                counter++;
-              },
-            ),
-
-            SizedBox(height: 20),
-            FloatingActionButton(
-              child: Icon(Icons.exposure_minus_1),
-              onPressed: () {
-                setState(() {
-                  if (counter == 0) return;
-
-                  counter--;
-                });
-              },
-            ),
-
-            SizedBox(height: 20),
-            FloatingActionButton(
-              child: Icon(Icons.refresh),
-              onPressed: () {
-                setState(() {
-                  counter = 0;
-                });
-              },
-            ),
-          ],
-        ),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: const Color.fromARGB(255, 43, 135, 209),
       ),
+      home: HomeScreen(),
     );
   }
 }
